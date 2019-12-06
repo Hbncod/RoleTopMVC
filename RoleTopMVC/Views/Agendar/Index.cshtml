@@ -1,0 +1,83 @@
+@model RoleTopMVC.ViewModels.AgendarViewModel
+
+<nav id="Agendamento">
+        <form method="POST"action='@Url.Action("CadastrarEvento","Agendar")'>
+                
+                <!-- DADOS DO CLIENTE -->
+                <div id="col1">
+                <label for="name">Nome:</label>
+                    <br />
+                    <input type=name maxlength="50" minlength="3" value="@Model.Cliente.Nome" name="nomec" required>
+                    <br>
+                    <!-- cpf/cnpj -->
+                    <label for="tel">CPF/CNPJ:</label>
+                    <br />
+                    <input type="tel"maxlength="14" minlength="11" value="@Model.Cliente.Cpf" name = "cpf" required>
+                    <br>
+                    <!-- telefone -->
+                    <label for="tel">Telefone</label>
+                    <br />
+                    <input type="tel"maxlength="11" minlength="8" value="@Model.Cliente.Telefone" name="tel" required>
+                    <br>
+                    <!-- email -->
+                    <label for="email">Email:</label>
+                    <br />
+                    <input type="email"maxlength="40" minlength="10" value="@Model.Cliente.Email" name="email" required>
+                    <br>
+                <div>
+                <div id="col2">
+                <!-- nome evento -->
+                    <label for="name">Nome do Evento:</label>
+                    <br />
+                    <input type="name" name="nomeEv" required>
+                    <br />
+                <!-- número convidados -->
+                    <label for="number">Número de Convidados:</label>
+                    <br />
+                    <input type="number" maxlength="3" minlength="1" max="500" min="1" name="convidados" required>
+                    <br>
+                <!-- Tipo Evento -->
+                    <br>
+                    <input type="radio" name="tipoEvento" value="1" required> Evento público<br>
+                    <input type="radio" name="tipoEvento" value="0" required> Evento privado<br>
+                    <br>
+                
+                    <p>Itens à disposição de aluguel:</p>
+                    
+                    <input type="checkbox" name="luzes" value="1" >
+                    <label for="luzes">luzes</label>
+                    <br>
+                    <input type="checkbox" name="som" value="1" >
+                    <label for="Som">Som</label>
+                    <!--Descrição do evento-->
+                    <br>
+                        <label for="text">Descrição do Evento:</label >
+                        <br />
+                        <input type="text"name="desc" required>
+                </div>
+                <div id="col3">
+                    <!-- imagem -->
+                    <label for="text">Imagem Do Evento:</label>
+                    <br>
+                    <input type="file" accept="image/png, .jpeg, .jpg, image/gif" name = receber >
+                    <br>
+                    <!------- data ---------->
+                    <label for="data">Data do Evento</label>
+                    <br />
+                    <input type="date" min="@Model.Datastring" maxlength="8" name="dataEvento" required>
+                    <br>
+                    <!------- Horário ------>
+                    <label for="time">Horário:</label>
+                    <br />
+                    <input type="time" name="horarioEvento" required>
+                    <br />
+                    <!-- O que acontecerá -->
+                        <label for="text">O que Ocorrerá no Evento:</label>
+                        <br />
+                        <input type="text" name="oqOcorrera" required>
+                        
+                </div>
+                    <input type="submit" value="Agendar">
+                    <p>@Model.Mensagem</p>
+        </form>
+</nav>

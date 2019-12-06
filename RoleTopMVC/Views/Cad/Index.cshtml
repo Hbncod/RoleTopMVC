@@ -1,0 +1,47 @@
+@model RoleTopMVC.ViewModels.RespostaViewModel
+<nav>
+            <div id="dadoscadastro">
+                <form method="POST" action = '@Url.Action("CadastrarCliente", "Cad")' >
+                    <!-- nome -->
+                    <label for="name">Nome:</label>
+                    <br />
+                    <input id="name"maxlength="50" minlength="3" name="nome" required>
+                    <br>
+                    <!-- cpf/cnpj -->
+                    <label for="tel">CPF/CNPJ:</label>
+                    <br />
+                    <input type="tel"maxlength="14" minlength="11" name = "cpf" required>
+                    <br>
+                    <!-- telefone -->
+                    <label for="tel">Telefone</label>
+                    <br />
+                    <input type="tel"maxlength="11" minlength="8" name="tel" required>
+                    <br>
+                    <!-- email -->
+                    <label for="email">Email:</label>
+                    <br />
+                    <input type="email"maxlength="40" minlength="10" name="email" required>
+                    <br>
+                    <!-- confirme email -->
+                    <label for="email">Confirmar email:</label>
+                    <br />
+                    <input type="email"maxlength="40" minlength="10" required>
+                    <br>
+                    <!-- senha -->
+                    <label for="password">Senha:</label>
+                    <br />
+                    <input type="password"maxlength="16" minlength="6" name="senha" required>
+                    <br>
+                    <!-- confirme senha -->
+                    <label for="password">Confirmar senha:</label>
+                    <br />
+                    <input type="password" maxlength="16" minlength="6" required>
+                    <br>
+                    <div id="criar">
+                        <input type="submit" value="Criar">
+                    </div>
+                    <p>@Model.Mensagem</p>
+                </form>
+                    
+            </div>
+</nav>

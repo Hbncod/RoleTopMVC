@@ -1,0 +1,44 @@
+﻿@model RoleTopMVC.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
+<html lang="pt/br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rolê Top</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav id="menuTd">
+        <div id="Logo">
+            <a asp-controller="Home" asp-action="Index"><img src ="imagens/logo.png"></a>
+        </div>
+            <div id="menu">
+                <ul>
+                    <li><a asp-controller="Agendar" asp-action="Index">Agendar</a></li>
+                    <li>Galeria</li>
+
+                    @if(string.IsNullOrEmpty(@Model.UsuarioEmail))
+                    {
+                        <li><a asp-controller="Login" asp-action="Index">Login</a></li>
+                        <li><a asp-controller="Cad" asp-action="Index">Cadastro</a></li>
+                    }
+                    else{
+                        <li><a asp-controller="Login" asp-action="MeusEventos">Meus Eventos</a></li>
+                        <li><a asp-controller="Login" asp-action="Logoff">Sair</a></li>
+                    }
+                </ul>
+            </div>
+    </nav>
+@RenderBody()
+            <div id="rodape">
+                <ul>
+                    <li>Endereço:Rua ...</li>
+                    <li>Telefone:(11)91545-1516</li>
+                    <li>Email:casadeshow@gmail.com</li>
+                </ul>
+            </div>
+    
+</body>
+</html>

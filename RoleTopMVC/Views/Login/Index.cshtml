@@ -1,0 +1,23 @@
+@model RoleTopMVC.ViewModels.RespostaViewModel 
+<nav>
+        <div id="dadoscadastro">
+            <form method="POST" action='@Url.Action("Entrar","Login")'>
+                <!-- Email -->
+                <label for="email">Email:</label>
+                <br />
+                <input id="email" type="email" name="email">
+                <br>
+                <!-- Senha -->
+                <label for="password">Senha:</label>
+                <br />
+                <input id="senha" type="password" name="senha">
+                <br>
+                <!-- botão criar -->
+                <div id="criar">
+                    <input type="submit" value="Entrar">
+                </div>
+                <p>@Model.Mensagem</p>
+            </form>
+            
+        </div>
+</nav>
