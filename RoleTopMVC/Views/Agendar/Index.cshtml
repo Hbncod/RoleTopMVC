@@ -44,11 +44,12 @@
                 
                     <p>Itens à disposição de aluguel:</p>
                     
-                    <input type="checkbox" name="luzes" value="1" >
-                    <label for="luzes">luzes</label>
+                    <input type="checkbox" name="luzes" value="50" >
+                    <label for="luzes">luzes Por Mais R$50</label>
                     <br>
-                    <input type="checkbox" name="som" value="1" >
-                    <label for="Som">Som</label>
+                    <input type="checkbox" name="som" value="50" >
+                    <label for="Som">Som Por Mais R$50</label>
+
                     <!--Descrição do evento-->
                     <br>
                         <label for="text">Descrição do Evento:</label >
@@ -64,7 +65,7 @@
                     <!------- data ---------->
                     <label for="data">Data do Evento</label>
                     <br />
-                    <input type="date" min="@Model.Datastring" maxlength="8" name="dataEvento" required>
+                    <input type="date" maxlength="8" name="dataEvento" required>
                     <br>
                     <!------- Horário ------>
                     <label for="time">Horário:</label>
@@ -75,7 +76,6 @@
                         <label for="text">O que Ocorrerá no Evento:</label>
                         <br />
                         <input type="text" name="oqOcorrera" required>
-                        
                 </div>
                     <input type="submit" value="Agendar">
                     <p>@Model.Mensagem</p>

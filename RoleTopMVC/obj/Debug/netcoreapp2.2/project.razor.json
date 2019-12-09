@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\RoleTopMVC.csproj",
+  "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\RoleTopMVC.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2961,63 +2961,63 @@
   "RootNamespace": "RoleTopMVC",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Login\\Index.cshtml",
-      "TargetPath": "Views\\Login\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Shared\\Erro.cshtml",
-      "TargetPath": "Views\\Shared\\Erro.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Login\\MeusEventos.cshtml",
-      "TargetPath": "Views\\Login\\MeusEventos.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Shared\\Sucesso.cshtml",
-      "TargetPath": "Views\\Shared\\Sucesso.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Agendar\\Index.cshtml",
-      "TargetPath": "Views\\Agendar\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Cad\\Index.cshtml",
-      "TargetPath": "Views\\Cad\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\RoleTopMVC\\Views\\Shared\\_CookieConsentPartial.cshtml",
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Shared\\_CookieConsentPartial.cshtml",
       "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Login\\Index.cshtml",
+      "TargetPath": "Views\\Login\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Cad\\Index.cshtml",
+      "TargetPath": "Views\\Cad\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Login\\MeusEventos.cshtml",
+      "TargetPath": "Views\\Login\\MeusEventos.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Agendar\\Index.cshtml",
+      "TargetPath": "Views\\Agendar\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Shared\\Sucesso.cshtml",
+      "TargetPath": "Views\\Shared\\Sucesso.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Adm\\Index.cshtml",
+      "TargetPath": "Views\\Adm\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

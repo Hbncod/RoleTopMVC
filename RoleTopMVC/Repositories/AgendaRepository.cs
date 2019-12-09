@@ -69,17 +69,6 @@ namespace RoleTopMVC.Repositories
             }
             return false;
         }
-
-        //! copiado
-        public string reverseString(string data)
-        {
-                char[] arrChar = data.ToCharArray();
-                Array.Reverse(arrChar);
-                string invertida = new String(arrChar);
-                data = invertida;
-                return data;
-        }
-
         private string PrepararEventoCSV (Eventos eventos)
         {
             Cliente c = eventos.Cliente;

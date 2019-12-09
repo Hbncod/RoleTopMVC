@@ -52,6 +52,7 @@ namespace RoleTopMVC.Repositories
                 if(ExtrairValorDoCampo("email", linha).Equals(email))
                 {
                     Cliente c = new Cliente();
+                    c.TipoUsuario = uint.Parse(ExtrairValorDoCampo("usuario_tipo", linha));
                     c.Nome = ExtrairValorDoCampo ("nome", linha);
                     c.Cpf = ExtrairValorDoCampo ("cpf",linha);
                     c.Telefone = ExtrairValorDoCampo ("telefone",linha);
@@ -66,7 +67,7 @@ namespace RoleTopMVC.Repositories
 
         private string PrepararRegistroCSV(Cliente cliente)
         {
-            return $"nome={cliente.Nome};cpf={cliente.Cpf};telefone={cliente.Telefone};email={cliente.Email};senha={cliente.Senha}";
+            return $"usuario_tipo={cliente.TipoUsuario};nome={cliente.Nome};cpf={cliente.Cpf};telefone={cliente.Telefone};email={cliente.Email};senha={cliente.Senha}";
         }
     }
 }

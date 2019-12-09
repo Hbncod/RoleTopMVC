@@ -43,7 +43,7 @@ namespace RoleTopMVC.Models
 
             this.Horario = horario;
             this.OqueAcontecera = oqueAcontecera;
-            this.PrecoTotal = 0; //! ARRUMAR
+            this.PrecoTotal = som + luzes + 10000;
             this.Som = som;
             this.Luzes = luzes;
         }

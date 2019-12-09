@@ -1,0 +1,18 @@
+@model RoleTopMVC.ViewModels.AgendarViewModel
+    <main>
+        <h3>Eventos Agendados</h3>
+        <div id="painel">
+            <div class="EventosAprovados">
+                <h4>Aprovados</h4>
+                <p>@Model.EventosAprovados</p>
+            </div>
+            <div class="EventosPendentes">
+                <h4>Pendentes</h4>
+                <p>@Model.EventosPendentes</p>
+            </div>
+            <div class="EventosReprovados">
+                <h4>Reprovados</h4>
+                <p>@Model.EventosReprovados</p>
+            </div>
+        </div>
+    </main>

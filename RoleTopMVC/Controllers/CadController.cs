@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RoleTopMVC.Enums;
 using RoleTopMVC.Models;
 using RoleTopMVC.Repositories;
 using RoleTopMVC.ViewModels;
@@ -42,13 +43,14 @@ namespace RoleTopMVC.Controllers
                     form["tel"],
                     form["email"],
                     form["senha"] );
-                
+
                 if(clienteRepository.ObterPorEmails(email))
                 {   
                     return RedirectToAction("Index", "Cad", new RespostaViewModel($"Usuário {email} Já Existe"));
                 }
                 else
                 {
+                    cliente.TipoUsuario = (uint) TipoUsuario.CLIENTE;
                     clienteRepository.Inserir(cliente);
                     return RedirectToAction("Index", "Home");
                 }
