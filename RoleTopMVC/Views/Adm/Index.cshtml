@@ -1,18 +1,83 @@
-@model RoleTopMVC.ViewModels.AgendarViewModel
+@model RoleTopMVC.ViewModels.AdmViewModel
     <main>
-        <h3>Eventos Agendados</h3>
-        <div id="painel">
-            <div class="EventosAprovados">
-                <h4>Aprovados</h4>
-                <p>@Model.EventosAprovados</p>
+        <h3>Status dos Eventos</h3>
+        <section id="status-pedidos">
+            <h3>Status dos pedidos</h3>
+            <div id="painel">
+                <div class="box-status-pedidos aprovados">
+                    <h4>Aprovados</h4>
+                    <p>@Model.EventosAprovados</p>
+                </div>
+                <div class="box-status-pedidos pendentes">
+                    <h4>Pendentes</h4>
+                    <p>@Model.EventosPendentes</p>
+                </div>
+                <div class="box-status-pedidos reprovados">
+                    <h4>Reprovados</h4>
+                    <p>@Model.EventosReprovados</p>
+                </div>
             </div>
-            <div class="EventosPendentes">
-                <h4>Pendentes</h4>
-                <p>@Model.EventosPendentes</p>
-            </div>
-            <div class="EventosReprovados">
-                <h4>Reprovados</h4>
-                <p>@Model.EventosReprovados</p>
-            </div>
-        </div>
+        </section>
+        <section id="lista-eventos">
+            <h3>Lista de Eventos</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th rowspan="2">Nome</th>
+                    <th rowspan="2">Cpf</th>
+                    <th rowspan="2">Telefone</th>
+                    <th rowspan="2">Email</th>
+                    <th rowspan="2">Nome do Evento</th>
+                    <th rowspan="2">Data</th>
+                    <th rowspan="2">Hora</th>
+                    <th rowspan="2">Convidados</th>
+                    <th rowspan="2">Tipo de Evento</th>
+                    <th rowspan="2" colspan="2">Imagem do Evento</th>
+                    <th rowspan="2">Acessórios Alugados</th>
+                    <th rowspan="2">Valor Cobrado</th>
+                    <th rowspan="2" colspan="2">Aprovar</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var evento in @Model.Eventos)
+                    {
+                        <tr>
+                            <td>@evento.Cliente.Nome</td>
+                            <td>@evento.Cliente.Cpf</td>
+                            <td>@evento.Cliente.Telefone</td>
+                            <td>@evento.Cliente.Email</td>
+                            <td>@evento.NomeEvento</td>
+                            <td>@evento.Agendado</td>
+                            <td>@evento.Horario</td>
+                            <td>@evento.NumeroConvidados</td>
+                            @if(evento.Publico > 0)
+                            {
+                                <td>Publico</td>
+                            }
+                            else 
+                            {
+                                <td>Privado</td>
+                            }
+                            <td>Imagem Evento</td>
+                            
+                            @if(@evento.Som > 0 && @evento.Luzes > 0)
+                            {
+                                <td>Som e Luzes</td>
+                            }
+                            else if(@evento.Som > 0 )
+                            {
+                                <td>Som </td>
+                            }
+                            else if(@evento.Luzes > 0 )
+                            {
+                                <td>Luzes</td>
+                            }
+                            <td>@evento.PrecoTotal</td>
+                            <td><a href='@Url.Action("Aprovar","Agendar", new {id = @evento.Id})'><i class="fas fa-check"></i></a></td> //! arrumarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+                            <td><a href='@Url.Action("Reprovar","Agendar", new {id = @evento.Id})'><i class="fas fa-times"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
     </main>

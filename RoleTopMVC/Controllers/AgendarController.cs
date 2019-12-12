@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RoleTopMVC.Enums;
 using RoleTopMVC.Models;
 using RoleTopMVC.Repositories;
 using RoleTopMVC.ViewModels;
@@ -58,11 +59,11 @@ namespace RoleTopMVC.Controllers
                 int.Parse(luzes),
                 int.Parse(som),
                 form["desc"],
-                DateTime.Parse(form["dataEvento"]),
-                DateTime.Parse(form["horarioEvento"]),
+                (form["dataEvento"]),
+                (form["horarioEvento"]),
                 form["oqOcorrera"]  
             );
-                DateTime data = DateTime.Parse(form["dataEvento"]);
+                string data = (form["dataEvento"]);
 
 
                 if(agendarRepository.ObterPorDatas(data))
@@ -71,7 +72,7 @@ namespace RoleTopMVC.Controllers
                 }
                 else{
                     agendarRepository.Inserir(evento);
-                    return RedirectToAction("MeusEventos","Login");
+                    return RedirectToAction("MeusEventos","Agendar");
                 }
             
             }catch(Exception e)
@@ -84,6 +85,59 @@ namespace RoleTopMVC.Controllers
                 UsuarioNome  = ObterUsuario_Nome_Session()
                 }
                 ));
+            }
+        }
+
+        public IActionResult MeusEventos(){
+
+            var emailCliente = ObterUsuarioSession();
+            
+            var eventosCliente = agendarRepository.ObterTodosPorCliente(emailCliente);
+            return View(new HistoricoViewModel()
+            {
+                Eventos = eventosCliente,
+                NomeView = "MeusEventos" , 
+                UsuarioEmail = ObterUsuarioSession(),
+                UsuarioNome = ObterUsuario_Nome_Session()
+            });
+        }
+        public IActionResult Aprovar(ulong id)
+        {
+            var evento = agendarRepository.ObterPorId(id);
+            evento.Status = (uint) StatusAgendamento.APROVADO;
+
+            if(agendarRepository.Atualizar(evento))
+            {
+                return RedirectToAction("Index","Adm");
+            }
+            else
+            {
+                return RedirectToAction("Index","Adm", new AdmViewModel("Não foi possivel Aprovar o Evento")
+                {
+                    NomeView = "Adm",
+                    UsuarioEmail = ObterUsuarioSession(),
+                    UsuarioNome = ObterUsuario_Nome_Session()
+                });
+            }
+        }
+
+        public IActionResult Reprovar(ulong id)
+        {
+            var evento = agendarRepository.ObterPorId(id);
+            evento.Status = (uint) StatusAgendamento.REPROVADO;
+
+            if(agendarRepository.Atualizar(evento))
+            {
+                return RedirectToAction("Index","Adm");
+            }
+            else
+            {
+                return RedirectToAction("Index","Adm", new AdmViewModel("Não foi possivel Reprovar o Evento")
+                {
+                    NomeView = "Adm",
+                    UsuarioEmail = ObterUsuarioSession(),
+                    UsuarioNome = ObterUsuario_Nome_Session()
+                });
             }
         }
     }

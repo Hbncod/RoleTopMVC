@@ -40,17 +40,40 @@ namespace RoleTopMVC.Repositories
         public List<Eventos> ObterTodos()
         {
             var linhas = File.ReadAllLines(PATH);
+
             List<Eventos> eventos = new List<Eventos>();
 
+            
             foreach (var linha in linhas)
             {
                 
+                var DataVirada =ExtrairValorDoCampo("data_Agendada",linha);
+                Eventos evento = new Eventos();
+
+                evento.Cliente.Nome = ExtrairValorDoCampo("cliente_nome", linha);
+                evento.Cliente.Cpf = ExtrairValorDoCampo("cliente_cpf", linha);
+                evento.Cliente.Telefone = ExtrairValorDoCampo("cliente_telefone",linha);
+                evento.Cliente.Email = ExtrairValorDoCampo("cliente_email",linha);
+                evento.Status = uint.Parse(ExtrairValorDoCampo("status_evento", linha));
+                evento.Id = ulong.Parse(ExtrairValorDoCampo("Id", linha));
+                evento.NomeEvento = ExtrairValorDoCampo("Evento_nome",linha);
+                evento.NumeroConvidados = int.Parse(ExtrairValorDoCampo("numero_convidados",linha));
+                evento.Publico = int.Parse(ExtrairValorDoCampo("evento_publico?",linha));
+                evento.DescricaoEvento = ExtrairValorDoCampo("descricao_evento",linha);
+                evento.Agendado =  ArrumarData(DataVirada); // aqui tambem datetime.Parse retirado
+                evento.Horario = ExtrairValorDoCampo("horario_inicio", linha);  // aq tbm
+                evento.OqueAcontecera = ExtrairValorDoCampo("oq_ocorrera",linha);
+                evento.PrecoTotal = int.Parse(ExtrairValorDoCampo("preco_total", linha));
+                evento.Luzes = int.Parse(ExtrairValorDoCampo("luzes",linha));
+                evento.Som = int.Parse(ExtrairValorDoCampo("som",linha));
+
+                eventos.Add(evento);
             }
-            return null;
+            return eventos;
         
         }
         
-        public bool ObterPorDatas(DateTime data)
+        public bool ObterPorDatas(string data)
         { 
             var linhas = File.ReadAllLines(PATH);
             var evento = new Eventos();
@@ -60,8 +83,8 @@ namespace RoleTopMVC.Repositories
                 {
                     continue;
                 }
-                var Datas = DateTime.Parse(ExtrairValorDoCampo ("data_Agendada",linha));
-                
+                var Datas = ExtrairValorDoCampo ("data_Agendada",linha);
+                // Datas = ArrumarData(Datas);
                 if(data.Equals(Datas))
                 {
                     return true;
@@ -69,11 +92,47 @@ namespace RoleTopMVC.Repositories
             }
             return false;
         }
+        public Eventos ObterPorId(ulong id)
+        {
+            var allEventos = ObterTodos();
+            foreach (var evento in allEventos)
+            {
+                if(id.Equals(evento.Id))
+                {
+                    return evento;
+                }
+            }
+            return null;
+        }
+        public bool Atualizar (Eventos evento)
+        {
+            var allEventos = File.ReadAllLines(PATH);
+            var eventoCSV = PrepararEventoCSV(evento);
+            var linhaEvento = -1; //!Colocar -1 para ele n encontrar nenhuma antes
+            var resultado = false;
+            
+            for(int i = 0; i < allEventos.Length; i++)
+            {
+                var idConvertido = ulong.Parse(ExtrairValorDoCampo("id",allEventos[i]));
+                if(evento.Id.Equals(idConvertido))
+                {
+                    linhaEvento = i;
+                    resultado = true;
+                    break;
+                }
+            }
+            if(resultado)
+            {
+                allEventos[linhaEvento] = eventoCSV;
+                File.WriteAllLines(PATH, allEventos); // Reescreve o código no csv;
+            }
+            return resultado;
+        }
         private string PrepararEventoCSV (Eventos eventos)
         {
             Cliente c = eventos.Cliente;
 
-            return $"Id={eventos.Id};data_Agendada={eventos.Agendado};cliente_nome={c.Nome};cliente_telefone={c.Telefone};cliente_email={c.Email};Evento_nome={eventos.NomeEvento};número_convidados={eventos.NumeroConvidados};horario_inicio={eventos.Horario};descricao_evento={eventos.DescricaoEvento};oq_ocorrera={eventos.OqueAcontecera};evento_publico?={eventos.Publico};luzes={eventos.Luzes};som={eventos.Som};preco_total={eventos.PrecoTotal};status_evento={eventos.Status};";
+            return $"Id={eventos.Id};data_Agendada={eventos.Agendado};cliente_nome={c.Nome};cliente_cpf={c.Cpf};cliente_telefone={c.Telefone};cliente_email={c.Email};Evento_nome={eventos.NomeEvento};numero_convidados={eventos.NumeroConvidados};horario_inicio={eventos.Horario};descricao_evento={eventos.DescricaoEvento};oq_ocorrera={eventos.OqueAcontecera};evento_publico?={eventos.Publico};luzes={eventos.Luzes};som={eventos.Som};preco_total={eventos.PrecoTotal};status_evento={eventos.Status};";
         }
     }
 }

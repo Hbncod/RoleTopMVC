@@ -11,11 +11,6 @@ namespace RoleTopMVC.ViewModels
         public Cliente Cliente {get;set;}
         public string Datastring {get;set;}
         public string Mensagem {get;set;}
-
-        public uint EventosAprovados {get;set;}
-        public uint EventosReprovados {get;set;}
-        public uint EventosPendentes {get;set;}
-
         public AgendarViewModel()
         {
 

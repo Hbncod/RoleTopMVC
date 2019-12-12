@@ -120,11 +120,13 @@ h2{
     display: none;
 }
 
-
+/* meus eventos */
+.letras{
+    color: #ff9933;
+}
 /*--------------- fim Agendar------------------- */
-
 body{
-    background-color: black;
+    /* background-color: black; */
 }
 #rodape{
     display: block;

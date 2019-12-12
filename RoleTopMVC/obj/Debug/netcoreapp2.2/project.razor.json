@@ -2971,6 +2971,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Agendar\\Cartao.cshtml",
+      "TargetPath": "Views\\Agendar\\Cartao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -3001,8 +3006,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Login\\MeusEventos.cshtml",
-      "TargetPath": "Views\\Login\\MeusEventos.cshtml",
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Agendar\\MeusEventos.cshtml",
+      "TargetPath": "Views\\Agendar\\MeusEventos.cshtml",
       "FileKind": "mvc"
     },
     {

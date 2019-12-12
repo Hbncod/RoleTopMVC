@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RoleTopMVC.Enums;
 using RoleTopMVC.Repositories;
 using RoleTopMVC.ViewModels;
 
@@ -46,9 +47,21 @@ namespace RoleTopMVC.Controllers
                 {
                     if(cliente.Senha.Equals(senha))
                     {
-                        HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, email);
-                        HttpContext.Session.SetString(SESSION_CLIENTE_NOME,cliente.Nome);
-                        return RedirectToAction("MeusEventos","Login");  //! CRIAR MEUS EVENTOS
+                        switch(cliente.TipoUsuario)
+                        {
+                            case (uint) TipoUsuario.CLIENTE:
+                                HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, email);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_NOME,cliente.Nome);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
+                            return RedirectToAction("MeusEventos","Agendar");
+                            
+                            default:
+                                HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, email);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
+
+                            return RedirectToAction("Index","Adm");
+                        }
                     }
                     else
                     {
@@ -63,18 +76,6 @@ namespace RoleTopMVC.Controllers
                 return View("Erro");
             }
         }
-        public IActionResult MeusEventos(){
-
-            var emailCliente = ObterUsuarioSession();
-            // aqui colocar os ultimos eventos da pessoa e próximos eventos
-            return View(new BaseViewModel()
-            {
-                NomeView = "Meus Eventos" , 
-                UsuarioEmail = ObterUsuarioSession(),
-                UsuarioNome = ObterUsuario_Nome_Session()
-            });
-        }
-
         public IActionResult Logoff()
         {
             HttpContext.Session.Remove(SESSION_CLIENTE_EMAIL);

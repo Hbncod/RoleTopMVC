@@ -1,0 +1,53 @@
+@model RoleTopMVC.ViewModels.HistoricoViewModel;
+
+<table>
+    <tr>
+        <thead>
+            <th class="letras">Data</th>
+            <th class="letras">Horario de Inicio</th>
+            <th class="letras">Descrição</th>
+            <th class="letras">Convidados</th>
+            <th class="letras">Equipamentos</th>
+            <th class="letras">Cartaz</th>
+            <th class="letras">Status Evento</th>
+        </thead>
+    </tr>
+    <tbody>
+        @foreach (var dados in Model.Eventos)
+        {
+            <tr>
+            <td>@dados.Agendado</td>
+            <td>@dados.Horario</td>
+            <td>@dados.DescricaoEvento</td>
+            <td>@dados.NumeroConvidados</td>
+            @if(dados.Som > 0 && dados.Luzes > 0)
+            {
+                <td class="letras">Som e Luzes</td>
+            }
+            else if(dados.Som > 0 )
+            {
+                <td class="letras">Som </td>
+            }
+            else if(dados.Luzes > 0 )
+            {
+                <td class="letras">Luzes</td>
+            }
+            <td class="letras">Por Imagem</td>
+            <br>
+            
+            @if(@dados.Status == 0)
+            {
+                <td>Pendente</td>
+            }
+            else if(@dados.Status == 1)
+            {
+                <td>Aprovado</td>
+            }
+            @if(@dados.Status == 2)
+            {
+                <td id="reprovado">Reprovado</td>
+            }
+            </tr>
+        }
+    </tbody>
+</table>

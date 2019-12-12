@@ -11,8 +11,8 @@ namespace RoleTopMVC.Models
         public Cliente Cliente {get;set;}
         public uint Status {get;set;}
         public double PrecoTotal {get;set;}
-        public DateTime  Agendado {get;set;}
-        public DateTime Horario {get;set;}
+        public String  Agendado {get;set;}
+        public String Horario {get;set;}
         public string NomeEvento {get;set;}
         public int NumeroConvidados {get;set;}
         public string DescricaoEvento {get;set;}
@@ -22,9 +22,9 @@ namespace RoleTopMVC.Models
         public int Som {get;set;}
         public Eventos()
         {
-            
+            this.Cliente = new Cliente();
         }
-        public Eventos(string nomeCliente, string cpf, string tel, string email ,string nomeEvento, int numeroConvidados,int publico, int luzes, int som, string desc, DateTime agendado, DateTime horario, string oqueAcontecera)
+        public Eventos(string nomeCliente, string cpf, string tel, string email ,string nomeEvento, int numeroConvidados,int publico, int luzes, int som, string desc, string agendado, string horario, string oqueAcontecera)
         {
             this.Cliente = new Cliente();
             Cliente.Nome = nomeCliente;
@@ -36,11 +36,14 @@ namespace RoleTopMVC.Models
             Id = (ulong) 0 ;
             this.NomeEvento = nomeEvento;
             this.NumeroConvidados = numeroConvidados;
-            this.Publico = publico;
+            this.Publico = publico; //publico = 1,Privado = 0
             this.DescricaoEvento = desc;
-
+            
+            
             this.Agendado = agendado;
 
+            var hora = DateTime.Now.ToShortTimeString();
+            hora = horario ;
             this.Horario = horario;
             this.OqueAcontecera = oqueAcontecera;
             this.PrecoTotal = som + luzes + 10000;
