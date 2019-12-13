@@ -92,7 +92,7 @@ thead > tr:first-child > th:last-child {
 
 
 body{
-    /* background-color: black; */
+    background-color: black;
 }
 #rodape{
     display: block;
