@@ -20,11 +20,12 @@ namespace RoleTopMVC.Models
         public int Publico {get;set;}
         public int  Luzes {get;set;}
         public int Som {get;set;}
+        public string Img {get;set;}
         public Eventos()
         {
             this.Cliente = new Cliente();
         }
-        public Eventos(string nomeCliente, string cpf, string tel, string email ,string nomeEvento, int numeroConvidados,int publico, int luzes, int som, string desc, string agendado, string horario, string oqueAcontecera)
+        public Eventos(string nomeCliente, string cpf, string tel, string email ,string nomeEvento, int numeroConvidados,int publico, int luzes, int som, string desc,string imagem ,string agendado, string horario, string oqueAcontecera)
         {
             this.Cliente = new Cliente();
             Cliente.Nome = nomeCliente;
@@ -38,7 +39,7 @@ namespace RoleTopMVC.Models
             this.NumeroConvidados = numeroConvidados;
             this.Publico = publico; //publico = 1,Privado = 0
             this.DescricaoEvento = desc;
-            
+            this.Img = imagem;
             
             this.Agendado = agendado;
 

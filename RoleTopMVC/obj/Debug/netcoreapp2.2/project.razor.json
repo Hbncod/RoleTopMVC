@@ -2976,6 +2976,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Home\\Galeria.cshtml",
+      "TargetPath": "Views\\Home\\Galeria.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\49826159859\\Documents\\git so\\RoleTopMVC\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"

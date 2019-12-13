@@ -11,8 +11,10 @@ namespace RoleTopMVC.ViewModels
         public Cliente Cliente {get;set;}
         public string Datastring {get;set;}
         public string Mensagem {get;set;}
+        public List<Eventos> EventosPrincipal {get;set;}
         public AgendarViewModel()
         {
+            this.EventosPrincipal = new List<Eventos>();
 
             this.Cliente = new Cliente();
         }
@@ -20,5 +22,6 @@ namespace RoleTopMVC.ViewModels
         {
             this.Mensagem = mensagem;
         }
+        
     }
 }

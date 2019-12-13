@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+td > tr{
+    color: #ff9933;
+}
 ul > li > a{
     color: #ff9933;
     text-decoration: none;
@@ -48,6 +51,9 @@ ul>li{
     padding-top: 1%;
     padding-bottom: 5%
     
+}
+img{
+    width: 100%
 }
 #corpoIndex > h2{
     font-size: 22px;
@@ -121,12 +127,41 @@ h2{
 }
 
 /* meus eventos */
+/* galeria */
 .letras{
     color: #ff9933;
 }
+h2{
+    color: #ff9933;
+    background: #67007a;
+    text-align: center;
+    padding-top: 1%;
+}
+.letra{
+    color: #ff9933;
+    background: #7d0093;
+    text-align: center;
+    margin-top: 5%;
+}
+.fotos{
+    margin:2%;
+    padding: 2%
+}
+.fotos>.cima{
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+    padding-top: 1%;
+}
+.fotos>.baixo{
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+/* fim galeria */
 /*--------------- fim Agendar------------------- */
 body{
-    /* background-color: black; */
+    background-color: black;
 }
 #rodape{
     display: block;

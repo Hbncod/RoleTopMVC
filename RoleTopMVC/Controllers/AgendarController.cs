@@ -59,8 +59,9 @@ namespace RoleTopMVC.Controllers
                 int.Parse(luzes),
                 int.Parse(som),
                 form["desc"],
-                (form["dataEvento"]),
-                (form["horarioEvento"]),
+                form["img"],
+                form["dataEvento"],
+                form["horarioEvento"],
                 form["oqOcorrera"]  
             );
                 string data = (form["dataEvento"]);

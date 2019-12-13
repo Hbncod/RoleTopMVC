@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using RoleTopMVC.Enums;
 using RoleTopMVC.Models;
 
 namespace RoleTopMVC.Repositories
@@ -36,6 +37,23 @@ namespace RoleTopMVC.Repositories
             }
             return eventosCliente;
         }
+        public List<Eventos> ObterPorPrincipal()
+        {
+            var publicos = ObterTodos();
+            List<Eventos> eventosPrincipal = new List<Eventos>();
+            
+            foreach (var evento in publicos)
+            {
+                if(evento.Publico == 1)
+                {
+                    if(evento.Status == (uint) StatusAgendamento.APROVADO)
+                    {
+                        eventosPrincipal.Add(evento);
+                    }
+                }
+            }
+            return eventosPrincipal;
+        }
 
         public List<Eventos> ObterTodos()
         {
@@ -46,8 +64,8 @@ namespace RoleTopMVC.Repositories
             
             foreach (var linha in linhas)
             {
+                var DataVirada = ExtrairValorDoCampo("data_Agendada",linha);  ;
                 
-                var DataVirada =ExtrairValorDoCampo("data_Agendada",linha);
                 Eventos evento = new Eventos();
 
                 evento.Cliente.Nome = ExtrairValorDoCampo("cliente_nome", linha);
@@ -60,8 +78,9 @@ namespace RoleTopMVC.Repositories
                 evento.NumeroConvidados = int.Parse(ExtrairValorDoCampo("numero_convidados",linha));
                 evento.Publico = int.Parse(ExtrairValorDoCampo("evento_publico?",linha));
                 evento.DescricaoEvento = ExtrairValorDoCampo("descricao_evento",linha);
-                evento.Agendado =  ArrumarData(DataVirada); // aqui tambem datetime.Parse retirado
-                evento.Horario = ExtrairValorDoCampo("horario_inicio", linha);  // aq tbm
+                evento.Img = ExtrairValorDoCampo("Imagem", linha);
+                evento.Agendado = ArrumarData(DataVirada);
+                evento.Horario = ExtrairValorDoCampo("horario_inicio", linha); 
                 evento.OqueAcontecera = ExtrairValorDoCampo("oq_ocorrera",linha);
                 evento.PrecoTotal = int.Parse(ExtrairValorDoCampo("preco_total", linha));
                 evento.Luzes = int.Parse(ExtrairValorDoCampo("luzes",linha));
@@ -70,9 +89,7 @@ namespace RoleTopMVC.Repositories
                 eventos.Add(evento);
             }
             return eventos;
-        
         }
-        
         public bool ObterPorDatas(string data)
         { 
             var linhas = File.ReadAllLines(PATH);
@@ -113,7 +130,7 @@ namespace RoleTopMVC.Repositories
             
             for(int i = 0; i < allEventos.Length; i++)
             {
-                var idConvertido = ulong.Parse(ExtrairValorDoCampo("id",allEventos[i]));
+                var idConvertido = ulong.Parse(ExtrairValorDoCampo("Id",allEventos[i]));
                 if(evento.Id.Equals(idConvertido))
                 {
                     linhaEvento = i;
@@ -132,7 +149,7 @@ namespace RoleTopMVC.Repositories
         {
             Cliente c = eventos.Cliente;
 
-            return $"Id={eventos.Id};data_Agendada={eventos.Agendado};cliente_nome={c.Nome};cliente_cpf={c.Cpf};cliente_telefone={c.Telefone};cliente_email={c.Email};Evento_nome={eventos.NomeEvento};numero_convidados={eventos.NumeroConvidados};horario_inicio={eventos.Horario};descricao_evento={eventos.DescricaoEvento};oq_ocorrera={eventos.OqueAcontecera};evento_publico?={eventos.Publico};luzes={eventos.Luzes};som={eventos.Som};preco_total={eventos.PrecoTotal};status_evento={eventos.Status};";
+            return $"Id={eventos.Id};data_Agendada={eventos.Agendado};cliente_nome={c.Nome};cliente_cpf={c.Cpf};cliente_telefone={c.Telefone};cliente_email={c.Email};Evento_nome={eventos.NomeEvento};numero_convidados={eventos.NumeroConvidados};horario_inicio={eventos.Horario};descricao_evento={eventos.DescricaoEvento};Imagem={eventos.Img};oq_ocorrera={eventos.OqueAcontecera};evento_publico?={eventos.Publico};luzes={eventos.Luzes};som={eventos.Som};preco_total={eventos.PrecoTotal};status_evento={eventos.Status};";
         }
     }
 }

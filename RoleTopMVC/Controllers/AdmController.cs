@@ -39,7 +39,7 @@ namespace RoleTopMVC.Controllers
             }
             else
                 {
-                    return RedirectToAction("Index","Login", new RespostaViewModel(){
+                    return RedirectToAction("Index","Login", new AdmViewModel(){
                         NomeView = "Login",
                         Mensagem = "Você não deveria estar aqui!"
                     });

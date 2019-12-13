@@ -67,3 +67,4 @@ C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTop
 C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Adm\Index.g.cshtml.cs
 C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\MeusEventos.g.cshtml.cs
 C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\Cartao.g.cshtml.cs
+C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Home\Galeria.g.cshtml.cs
