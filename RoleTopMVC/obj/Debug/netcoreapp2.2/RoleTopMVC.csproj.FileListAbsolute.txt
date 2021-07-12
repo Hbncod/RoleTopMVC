@@ -68,3 +68,42 @@ C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\V
 C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\MeusEventos.g.cshtml.cs
 C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\Cartao.g.cshtml.cs
 C:\Users\49826159859\Documents\git so\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Home\Galeria.g.cshtml.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\appsettings.Development.json
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\appsettings.json
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.deps.json
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.runtimeconfig.json
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.runtimeconfig.dev.json
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.dll
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.pdb
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.Views.dll
+E:\Personal\RoleTopMVC\RoleTopMVC\bin\Debug\netcoreapp2.2\RoleTopMVC.Views.pdb
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.csprojAssemblyReference.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.AssemblyInfoInputs.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.AssemblyInfo.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.csproj.CoreCompileInputs.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.RazorAssemblyInfo.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.RazorAssemblyInfo.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.TagHelpers.input.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.TagHelpers.output.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.RazorCoreGenerate.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Adm\Index.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\Cartao.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\Index.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Agendar\MeusEventos.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Cad\Index.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Home\Galeria.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Login\Index.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Sucesso.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.RazorTargetAssemblyInfo.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.RazorTargetAssemblyInfo.cs
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.Views.pdb
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.dll
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.pdb
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.genruntimeconfig.cache
+E:\Personal\RoleTopMVC\RoleTopMVC\obj\Debug\netcoreapp2.2\RoleTopMVC.csproj.CopyComplete
