@@ -1,70 +1,71 @@
-using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoleTopMVC.Enums;
 using RoleTopMVC.Models;
 using RoleTopMVC.Repositories;
 using RoleTopMVC.ViewModels;
+using System;
 
 namespace RoleTopMVC.Controllers
 {
-    
+
     public class CadController : AbstractController
     {
         ClienteRepository clienteRepository = new ClienteRepository();
 
         [HttpGet]
-        public IActionResult Index(RespostaViewModel respostaViewModel){
+        public IActionResult Index(RespostaViewModel respostaViewModel)
+        {
             if (respostaViewModel == null)
             {
-            return View(new BaseViewModel()
-            {
-                NomeView = "Cadastro",
-                UsuarioEmail = ObterUsuarioSession(),
-                UsuarioNome  = ObterUsuario_Nome_Session()
-            });
+                return View(new BaseViewModel()
+                {
+                    NomeView = "Cadastro",
+                    UsuarioEmail = ObterUsuarioSession(),
+                    UsuarioNome = ObterUsuario_Nome_Session()
+                });
             }
-            else{
+            else
+            {
                 return View(respostaViewModel);
             }
         }
 
         [HttpPost]
-        public IActionResult CadastrarCliente (IFormCollection form)
+        public IActionResult CadastrarCliente(IFormCollection form)
         {
             try
             {
                 string email;
                 email = form["email"];
-                
+
                 var cliente = new Cliente(
                     form["nome"],
                     form["cpf"],
                     form["tel"],
                     form["email"],
-                    form["senha"] );
+                    form["senha"]);
 
-                if(clienteRepository.ObterPorEmails(email))
-                {   
+                if (clienteRepository.ObterPorEmails(email))
+                {
                     return RedirectToAction("Index", "Cad", new RespostaViewModel($"Usuário {email} Já Existe"));
                 }
                 else
                 {
-                    cliente.TipoUsuario = (uint) TipoUsuario.CLIENTE;
+                    cliente.TipoUsuario = TipoUsuario.CLIENTE;
                     clienteRepository.Inserir(cliente);
                     return RedirectToAction("Index", "Home");
                 }
-                
-                
-                
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 System.Console.WriteLine(e.StackTrace);
-                return View("Erro",new RespostaViewModel{
-                NomeView = "Erro",
-                UsuarioEmail = ObterUsuarioSession(),
-                UsuarioNome  = ObterUsuario_Nome_Session()
-            });
+                return View("Erro", new RespostaViewModel
+                {
+                    NomeView = "Erro",
+                    UsuarioEmail = ObterUsuarioSession(),
+                    UsuarioNome = ObterUsuario_Nome_Session()
+                });
             }
         }
     }

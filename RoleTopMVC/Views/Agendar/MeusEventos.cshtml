@@ -21,15 +21,15 @@
                 <td>@dados.Horario</td>
                 <td>@dados.DescricaoEvento</td>
                 <td>@dados.NumeroConvidados</td>
-                @if(dados.Som > 0 && dados.Luzes > 0)
+                @if(dados.Som && dados.Luzes)
                 {
                     <td class="letras">Som e Luzes</td>
                 }
-                else if(dados.Som > 0 )
+                else if(dados.Som)
                 {
                     <td class="letras">Som </td>
                 }
-                else if(dados.Luzes > 0 )
+                else if(dados.Luzes)
                 {
                     <td class="letras">Luzes</td>
                 }

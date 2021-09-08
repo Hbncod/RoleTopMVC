@@ -1,6 +1,5 @@
-using System.IO;
 using RoleTopMVC.Models;
-using RoleTopMVC.ViewModels;
+using System.IO;
 
 namespace RoleTopMVC.Repositories
 {
@@ -10,7 +9,7 @@ namespace RoleTopMVC.Repositories
 
         public ClienteRepository()
         {
-            if(!File.Exists(PATH))
+            if (!File.Exists(PATH))
             {
                 File.Create(PATH).Close();
             }
@@ -21,22 +20,21 @@ namespace RoleTopMVC.Repositories
             var linha = new string[] { PrepararRegistroCSV(cliente) };
             File.AppendAllLines(PATH, linha);
 
-            return true;            
+            return true;
         }
 
         public bool ObterPorEmails(string email)
-        { 
+        {
             var linhas = File.ReadAllLines(PATH);
-            var cliente = new Cliente();
             foreach (var linha in linhas)
             {
-                if(string.IsNullOrEmpty(linha))
+                if (string.IsNullOrEmpty(linha))
                 {
                     continue;
                 }
-                var Email = ExtrairValorDoCampo ("email",linha);
-                
-                if(email.Equals(Email))
+                var Email = ExtrairValorDoCampo("email", linha);
+
+                if (email.Equals(Email))
                 {
                     return true;
                 }
@@ -47,18 +45,18 @@ namespace RoleTopMVC.Repositories
         public Cliente ObterPor(string email)
         {
             var linhas = File.ReadAllLines(PATH);
-            foreach(var linha in linhas)
+            foreach (var linha in linhas)
             {
-                if(ExtrairValorDoCampo("email", linha).Equals(email))
+                if (ExtrairValorDoCampo("email", linha).Equals(email))
                 {
                     Cliente c = new Cliente();
-                    c.TipoUsuario = uint.Parse(ExtrairValorDoCampo("usuario_tipo", linha));
-                    c.Nome = ExtrairValorDoCampo ("nome", linha);
-                    c.Cpf = ExtrairValorDoCampo ("cpf",linha);
-                    c.Telefone = ExtrairValorDoCampo ("telefone",linha);
-                    c.Email = ExtrairValorDoCampo ("email",linha);
-                    c.Senha = ExtrairValorDoCampo ("senha",linha);
-                    
+                    //c.TipoUsuario = ExtrairValorDoCampo("usuario_tipo", linha);
+                    c.Nome = ExtrairValorDoCampo("nome", linha);
+                    c.Cpf = ExtrairValorDoCampo("cpf", linha);
+                    c.Telefone = ExtrairValorDoCampo("telefone", linha);
+                    c.Email = ExtrairValorDoCampo("email", linha);
+                    c.Senha = ExtrairValorDoCampo("senha", linha);
+
                     return c;
                 }
             }

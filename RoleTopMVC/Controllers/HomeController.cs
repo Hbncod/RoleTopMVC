@@ -16,7 +16,7 @@ namespace RoleTopMVC.Controllers
         AgendaRepository agr = new AgendaRepository();
         public IActionResult Index()
         {
-            List<Eventos> EventosPublicos = agr.ObterPorPrincipal();
+            List<Evento> EventosPublicos = agr.ObterPorPrincipal();
             return View(new AgendarViewModel()
             {
                 EventosPrincipal = EventosPublicos,

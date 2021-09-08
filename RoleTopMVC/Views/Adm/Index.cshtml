@@ -40,14 +40,14 @@
                     @foreach (var evento in @Model.Eventos)
                     {
                         <tr>
-                            <td>@evento.Cliente.Nome</td>
-                            <td>@evento.Cliente.Telefone</td>
-                            <td>@evento.Cliente.Email</td>
+                            <td>@evento.Responsavel.Nome</td>
+                            <td>@evento.Responsavel.Telefone</td>
+                            <td>@evento.Responsavel.Email</td>
                             <td>@evento.NomeEvento</td>
                             <td>@evento.Agendado</td>
                             <td>@evento.Horario</td>
                             <td>@evento.NumeroConvidados</td>
-                            @if(evento.Publico > 0)
+                            @if(evento.EventoPublico)
                             {
                                 <td>Publico</td>
                             }
@@ -57,19 +57,19 @@
                             }
                             <td>Por Imagem</td>
                             
-                            @if(@evento.Som > 0 && @evento.Luzes > 0)
+                            @if(@evento.Som && @evento.Luzes)
                             {
                                 <td>Som e Luzes</td>
                             }
-                            else if(@evento.Som > 0 )
+                            else if(@evento.Som)
                             {
                                 <td>Som </td>
                             }
-                            else if(@evento.Luzes > 0 )
+                            else if(@evento.Luzes)
                             {
                                 <td>Luzes</td>
                             }
-                            <td>@evento.PrecoTotal</td>
+                            <td>@evento.Preco</td>
                             
                             <td><a href='@Url.Action("Aprovar","Agendar", new {id = @evento.Id })'><i class="fas fa-check"></i></a></td> 
                             <td><a href='@Url.Action("Reprovar","Agendar", new {id = @evento.Id})'><i class="fas fa-times"></i></a></td>
