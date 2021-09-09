@@ -1,16 +1,16 @@
-using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoleTopMVC.Enums;
 using RoleTopMVC.Repositories;
 using RoleTopMVC.ViewModels;
+using System;
 
 namespace RoleTopMVC.Controllers
 {
     public class LoginController : AbstractController
     {
         private ClienteRepository clienteRepository = new ClienteRepository();
-        
+
         [HttpGet]
         public IActionResult Index(RespostaViewModel rvm)
         {
@@ -18,14 +18,16 @@ namespace RoleTopMVC.Controllers
             {
                 return View(new BaseViewModel()
                 {
-                    NomeView = "Login" , 
+                    NomeView = "Login",
                     UsuarioEmail = ObterUsuarioSession(),
                     UsuarioNome = ObterUsuario_Nome_Session()
-                }); 
-            } else {
+                });
+            }
+            else
+            {
                 return View(rvm);
             }
-            
+
         }
         [HttpPost]
         public IActionResult Entrar(IFormCollection form)
@@ -45,32 +47,35 @@ namespace RoleTopMVC.Controllers
 
                 if (cliente != null)
                 {
-                    if(cliente.Senha.Equals(senha))
+                    if (cliente.Senha.Equals(senha))
                     {
-                        switch(cliente.TipoUsuario)
+                        switch (cliente.TipoUsuario)
                         {
-                            case (uint) TipoUsuario.CLIENTE:
+                            case TipoUsuario.CLIENTE:
                                 HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, email);
-                                HttpContext.Session.SetString(SESSION_CLIENTE_NOME,cliente.Nome);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
                                 HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
-                            return RedirectToAction("MeusEventos","Agendar");
-                            
+                                return RedirectToAction("MeusEventos", "Agendar");
+
                             default:
                                 HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, email);
                                 HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
                                 HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
 
-                            return RedirectToAction("Index","Adm");
+                                return RedirectToAction("Index", "Adm");
                         }
                     }
                     else
                     {
                         return RedirectToAction("Index", "Login", new RespostaViewModel("Senha Incorreta"));
                     }
-                }else{
+                }
+                else
+                {
                     return RedirectToAction("Index", "Login", new RespostaViewModel($"Usuário {email} não foi encontrado"));
                 }
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 System.Console.WriteLine(e.StackTrace);
                 return View("Erro");
@@ -81,9 +86,9 @@ namespace RoleTopMVC.Controllers
             HttpContext.Session.Remove(SESSION_CLIENTE_EMAIL);
             HttpContext.Session.Remove(SESSION_CLIENTE_NOME);
             HttpContext.Session.Clear();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
 
         }
-        
+
     }
 }

@@ -11,39 +11,40 @@ namespace RoleTopMVC.Controllers
 
         public IActionResult Index()
         {
-            var ninguemLogado = string.IsNullOrEmpty(ObterUsuarioTipoSession());
-            if(!ninguemLogado && (uint) TipoUsuario.ADMINISTRADOR == uint.Parse(ObterUsuarioTipoSession()))
+            var tipoUsuario = ObterUsuarioTipoSession();
+            if (TipoUsuario.ADMINISTRADOR == tipoUsuario)
             {
                 var agenda = agendaRepository.ObterTodos();
                 var AdmVM = new AdmViewModel();
 
-                foreach(var eventos in agenda )
+                foreach (var eventos in agenda)
                 {
-                    switch(eventos.Status)
+                    switch (eventos.Status)
                     {
-                        case (uint) StatusAgendamento.APROVADO:
+                        case (uint)StatusAgendamento.APROVADO:
                             AdmVM.EventosAprovados++;
-                        break;
-                        case (uint) StatusAgendamento.REPROVADO:
+                            break;
+                        case (uint)StatusAgendamento.REPROVADO:
                             AdmVM.EventosReprovados++;
-                        break;
+                            break;
                         default:
                             AdmVM.EventosPendentes++;
                             AdmVM.Eventos.Add(eventos);
-                        break;
+                            break;
                     }
                 }
-                    AdmVM.NomeView = "Administrador";
-                    AdmVM.UsuarioEmail = ObterUsuarioSession();
-                    return View(AdmVM);
+                AdmVM.NomeView = "Administrador";
+                AdmVM.UsuarioEmail = ObterUsuarioSession();
+                return View(AdmVM);
             }
             else
+            {
+                return RedirectToAction("Index", "Login", new AdmViewModel()
                 {
-                    return RedirectToAction("Index","Login", new AdmViewModel(){
-                        NomeView = "Login",
-                        Mensagem = "Você não deveria estar aqui!"
-                    });
-                }
+                    NomeView = "Login",
+                    Mensagem = "Você não deveria estar aqui!"
+                });
+            }
         }
     }
 }

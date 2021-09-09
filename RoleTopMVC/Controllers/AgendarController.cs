@@ -1,10 +1,10 @@
-using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoleTopMVC.Enums;
 using RoleTopMVC.Models;
 using RoleTopMVC.Repositories;
 using RoleTopMVC.ViewModels;
+using System;
 
 namespace RoleTopMVC.Controllers
 {
@@ -14,9 +14,11 @@ namespace RoleTopMVC.Controllers
         ClienteRepository clienteRepository = new ClienteRepository();
 
         [HttpGet]
-        public IActionResult Index(){
-            var avm = new AgendarViewModel(){
-                NomeView = "Agendar" , 
+        public IActionResult Index()
+        {
+            var avm = new AgendarViewModel()
+            {
+                NomeView = "Agendar",
                 UsuarioEmail = ObterUsuarioSession(),
                 UsuarioNome = ObterUsuario_Nome_Session()
             };
@@ -24,7 +26,7 @@ namespace RoleTopMVC.Controllers
             var usuarioLogado = ObterUsuarioSession();
 
             var clienteLogado = clienteRepository.ObterPor(usuarioLogado);
-            if(clienteLogado != null)
+            if (clienteLogado != null)
             {
                 avm.Cliente = clienteLogado;
             }
@@ -33,71 +35,68 @@ namespace RoleTopMVC.Controllers
 
         }
         [HttpPost]
-        public IActionResult CadastrarEvento (IFormCollection form)
+        public IActionResult CadastrarEvento(IFormCollection form)
         {
-            try{
-            
-            string luzes = (form["luzes"]);
-            if(string.IsNullOrEmpty(luzes))
-            { 
-                luzes = "0";
-            }
-
-            string som = (form["som"]);
-            if(string.IsNullOrEmpty(som))
+            try
             {
-                som = "0";
-            }
-            Eventos evento = new Eventos(
-                form["nomec"],
-                form["cpf"],
-                form["tel"],
-                form["email"],
-                form["nomeEv"],
-                int.Parse(form["convidados"]),
-                int.Parse(form["tipoEvento"]),
-                int.Parse(luzes),
-                int.Parse(som),
-                form["desc"],
-                form["img"],
-                form["dataEvento"],
-                form["horarioEvento"],
-                form["oqOcorrera"]  
-            );
+
+                bool luzes = Convert.ToBoolean(form["luzes"]);
+
+                bool som = Convert.ToBoolean(form["som"]);
+
+                var evento = new Evento(
+                    new Responsavel(form["nomec"],
+                        form["cpf"],
+                        form["tel"],
+                        form["email"]
+                        ),
+                    form["nomeEv"],
+                    int.Parse(form["convidados"]),
+                    bool.Parse(form["tipoEvento"]),
+                    luzes,
+                    som,
+                    form["desc"],
+                    form["img"],
+                    form["dataEvento"],
+                    form["oqOcorrera"]
+                );
                 string data = (form["dataEvento"]);
 
 
-                if(agendarRepository.ObterPorDatas(data))
+                if (agendarRepository.ObterPorDatas(data))
                 {
-                    return RedirectToAction("Index","Agendar", new AgendarViewModel($"a data {data} não está disponível"));
+                    return RedirectToAction("Index", "Agendar", new AgendarViewModel($"a data {data} não está disponível"));
                 }
-                else{
+                else
+                {
                     agendarRepository.Inserir(evento);
-                    return RedirectToAction("MeusEventos","Agendar");
+                    return RedirectToAction("MeusEventos", "Agendar");
                 }
-            
-            }catch(Exception e)
+
+            }
+            catch (Exception e)
             {
                 System.Console.WriteLine(e);
-                return View(("Erro",new RespostaViewModel
+                return View(("Erro", new RespostaViewModel
                 {
-                NomeView = "Erro",
-                UsuarioEmail = ObterUsuarioSession(),
-                UsuarioNome  = ObterUsuario_Nome_Session()
+                    NomeView = "Erro",
+                    UsuarioEmail = ObterUsuarioSession(),
+                    UsuarioNome = ObterUsuario_Nome_Session()
                 }
                 ));
             }
         }
 
-        public IActionResult MeusEventos(){
+        public IActionResult MeusEventos()
+        {
 
             var emailCliente = ObterUsuarioSession();
-            
+
             var eventosCliente = agendarRepository.ObterTodosPorCliente(emailCliente);
             return View(new HistoricoViewModel()
             {
                 Eventos = eventosCliente,
-                NomeView = "MeusEventos" , 
+                NomeView = "MeusEventos",
                 UsuarioEmail = ObterUsuarioSession(),
                 UsuarioNome = ObterUsuario_Nome_Session()
             });
@@ -105,15 +104,15 @@ namespace RoleTopMVC.Controllers
         public IActionResult Aprovar(ulong id)
         {
             var evento = agendarRepository.ObterPorId(id);
-            evento.Status = (uint) StatusAgendamento.APROVADO;
+            evento.Status = (uint)StatusAgendamento.APROVADO;
 
-            if(agendarRepository.Atualizar(evento))
+            if (agendarRepository.Atualizar(evento))
             {
-                return RedirectToAction("Index","Adm");
+                return RedirectToAction("Index", "Adm");
             }
             else
             {
-                return RedirectToAction("Index","Adm", new AdmViewModel("Não foi possivel Aprovar o Evento")
+                return RedirectToAction("Index", "Adm", new AdmViewModel("Não foi possivel Aprovar o Evento")
                 {
                     NomeView = "Adm",
                     UsuarioEmail = ObterUsuarioSession(),
@@ -125,15 +124,15 @@ namespace RoleTopMVC.Controllers
         public IActionResult Reprovar(ulong id)
         {
             var evento = agendarRepository.ObterPorId(id);
-            evento.Status = (uint) StatusAgendamento.REPROVADO;
+            evento.Status = (uint)StatusAgendamento.REPROVADO;
 
-            if(agendarRepository.Atualizar(evento))
+            if (agendarRepository.Atualizar(evento))
             {
-                return RedirectToAction("Index","Adm");
+                return RedirectToAction("Index", "Adm");
             }
             else
             {
-                return RedirectToAction("Index","Adm", new AdmViewModel("Não foi possivel Reprovar o Evento")
+                return RedirectToAction("Index", "Adm", new AdmViewModel("Não foi possivel Reprovar o Evento")
                 {
                     NomeView = "Adm",
                     UsuarioEmail = ObterUsuarioSession(),

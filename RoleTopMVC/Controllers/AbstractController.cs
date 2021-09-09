@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RoleTopMVC.Enums;
 
 namespace RoleTopMVC.Controllers
 {
@@ -11,39 +12,23 @@ namespace RoleTopMVC.Controllers
         protected string ObterUsuarioSession()
         {
             var email = HttpContext.Session.GetString(SESSION_CLIENTE_EMAIL); //HttpContext.Session == recebe um (chave,conteudo)
-            if(!string.IsNullOrEmpty(email))
-            {
-                return email;
-            }
-            else{
-                return "";
-            }
+
+            return !string.IsNullOrEmpty(email) ? email : "";
         }
         protected string ObterUsuario_Nome_Session()
         {
             var nome = HttpContext.Session.GetString(SESSION_CLIENTE_NOME); //HttpContext.Session == recebe um (chave,conteudo)
-            if(!string.IsNullOrEmpty(nome))
-            {
-                return nome;
-            }
-            else{
-                return "";
-            }
+
+            return !string.IsNullOrEmpty(nome) ? nome : "";
         }
 
-        protected string ObterUsuarioTipoSession()
+        protected TipoUsuario ObterUsuarioTipoSession()
         {
             var tipoUsuario = HttpContext.Session.GetString(SESSION_CLIENTE_TIPO);
-            if (!string.IsNullOrEmpty(tipoUsuario))
-            {
-                return tipoUsuario;
-            } 
-            else
-            {
-                return "";
-            }
+
+            return tipoUsuario == "CLIENTE" ? TipoUsuario.CLIENTE : TipoUsuario.ADMINISTRADOR;
         }
 
-        
+
     }
 }
