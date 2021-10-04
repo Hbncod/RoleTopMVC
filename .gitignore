@@ -307,3 +307,4 @@ MigrationBackup/
 .ionide/
 
 RoleTopMVC/bin/Debug
+RoleTopMVC/obj
